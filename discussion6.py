@@ -67,7 +67,7 @@ class HorseRaces:
                 race_name = headers[i]
                 race_time = float(row[i])
                 race_dict[horse_name][race_name] = race_time
-
+        return race_dict
 ###############################################################################
 ##### TASK 2
 ###############################################################################
@@ -123,8 +123,15 @@ class HorseRaces:
             A dictionary with each horse and their average time.
             EXAMPLE: {'Gold Ship': 16.5, 'Daiwa Scarlet': 17.2}
         '''
-        pass
-
+        average_times = {}
+        for horse, races in self.race_dict.items():
+            total = 0
+            count = 0
+            for time in races.values():
+                total += time
+                count += 1
+            average_times[horse] = total / count
+        return average_times
 ###############################################################################
 ##### DO NOT MODIFY THE UNIT TESTS BELOW!
 ###############################################################################
